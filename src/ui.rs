@@ -471,21 +471,42 @@ pub fn render_action_button(
     clicked_window
 }
 
-/// Attribution to the upstream project this is derived from, alongside the
-/// version and license. Kept visible in the app rather than only in the repo.
+/// Authorship, version and license, a link back to the repo, and attribution to
+/// the upstream project this is derived from. Kept visible in the app rather
+/// than only in the repo. Every value comes from Cargo.toml so the footer cannot
+/// drift from the package metadata.
 pub fn render_footer(ui: &mut egui::Ui)
 {
+    const FOOTER_FONT: f32 = 9.0;
+
+    // Cargo joins multiple authors with ':'.
+    let authors = env!("CARGO_PKG_AUTHORS").replace(':', ", ");
+
+    // The scheme is noise at this size, and the hover tooltip egui attaches to a
+    // hyperlink still shows the target in full.
+    let repo_url = env!("CARGO_PKG_REPOSITORY");
+    let repo_label = repo_url.trim_start_matches("https://").trim_start_matches("http://");
+
     ui.add_space(6.0);
 
+    // Each line is a single widget: a row of several widgets would be laid out
+    // across the full width and come out left-aligned against the centered lines.
     ui.with_layout(Layout::top_down(Align::Center), |ui| {
         ui.label(
             RichText::new(format!(
-                "{} v{}  ·  based on ihateborders by Z1xus  ·  GPL-3.0",
-                env!("CARGO_PKG_NAME"),
+                "v{}  ·  by {}  ·  GPL-3.0  ·  based on ihateborders by Z1xus",
                 env!("CARGO_PKG_VERSION"),
+                authors,
             ))
-            .font(FontId::proportional(9.0))
+            .font(FontId::proportional(FOOTER_FONT))
             .color(TEXT_FAINT),
+        );
+
+        ui.add_space(2.0);
+
+        ui.hyperlink_to(
+            RichText::new(repo_label).font(FontId::proportional(FOOTER_FONT)).color(ACCENT),
+            repo_url,
         );
     });
 }
