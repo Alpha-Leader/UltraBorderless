@@ -1,4 +1,4 @@
-## ultraborderless <img src="assets/icon.ico" alt="ultraborderless icon" width="48" height="48" align="left">
+## UltraBorderless <img src="assets/icon.png" alt="UltraBorderless icon" width="48" height="48" align="left">
 ![Windows Only](https://img.shields.io/badge/platform-Windows-blue?logo=windows)
 [![License](https://img.shields.io/badge/license-GPL--3.0-green)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/Alpha-Leader/UltraBorderless/total)](https://github.com/Alpha-Leader/UltraBorderless/releases)
@@ -10,6 +10,10 @@ the whole display.
 
 Built for ultrawides. On a 7680×2160 monitor you can run a game as a 3840×2160 borderless window
 dead center, covering the taskbar, with 1920 px of desktop still usable on each side.
+
+<p align="center">
+  <img src="assets/screenshot.png" alt="UltraBorderless placing a 3840x2160 region centered on a 7680x2160 display" width="380">
+</p>
 
 ### Credit
 
