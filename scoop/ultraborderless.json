@@ -1,12 +1,12 @@
 {
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Windows utility for making any window borderless and placing it into a region of a monitor, sized and anchored how you want.",
   "homepage": "https://github.com/Alpha-Leader/UltraBorderless",
   "license": "GPL-3.0-only",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/Alpha-Leader/UltraBorderless/releases/download/v1.2.0/ultraborderless.exe",
-      "hash": "62e15c8863ee25844453b0c3e119b6fb4050a1b3093b69ce3027510cad9f9c5f"
+      "url": "https://github.com/Alpha-Leader/UltraBorderless/releases/download/v1.2.1/ultraborderless.exe",
+      "hash": "0ce6812dafc9107f8426cab1b5a1f916d2efe0b7b1cecc1cc536361584a67d62"
     }
   },
   "bin": "ultraborderless.exe",
