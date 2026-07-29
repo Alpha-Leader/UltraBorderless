@@ -1,9 +1,9 @@
-[build]
-rustflags = [
-    "-C", "target-cpu=native",
-]
-
-[target.x86_64-pc-windows-msvc]
-rustflags = [
-    "-C", "target-cpu=native",
-]
+# Intentionally no target-cpu=native.
+#
+# Release binaries are built by CI, so target-cpu=native would tune the
+# published executable to whatever CPU the build runner happened to have,
+# crashing with SIGILL on any older CPU that lacks those instructions. The
+# gain for a small egui GUI does not justify that.
+#
+# Size and speed come from the release profile in Cargo.toml
+# (opt-level = "z", lto, codegen-units = 1, strip).

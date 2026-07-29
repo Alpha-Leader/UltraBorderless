@@ -21,12 +21,10 @@ jobs:
       - name: Build release
         run: cargo build --release --locked
 
-      - name: UPX compress executable
-        uses: crazy-max/ghaction-upx@v3
-        with:
-          files: |
-            target/release/ultraborderless.exe
-          args: --best --lzma
+      # Deliberately not UPX-packed: the release profile already applies
+      # opt-level = "z", LTO and strip, and a packed unsigned binary that
+      # restyles other processes' windows is a strong antivirus heuristic
+      # trigger for very little size saving.
 
       - name: Generate SHA256SUMS.txt
         run: |
