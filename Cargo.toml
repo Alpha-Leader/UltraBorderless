@@ -1,7 +1,12 @@
 [package]
-name = "ihateborders"
-version = "1.1.1"
+name = "ultraborderless"
+version = "1.2.0"
 edition = "2024"
+description = "Windows utility for making any window borderless and placing it into a region of a monitor, sized and anchored how you want."
+authors = ["Alpha-Leader"]
+license = "GPL-3.0-only"
+repository = "https://github.com/Alpha-Leader/ultraborderless"
+readme = "README.md"
 
 [dependencies]
 eframe = { version = "0.32.1", default-features = false, features = [
@@ -16,6 +21,7 @@ windows = { version = "0.61", features = [
     "Win32_UI_WindowsAndMessaging",
     "Win32_System_Diagnostics_ToolHelp",
     "Win32_Graphics_Gdi",
+    "Win32_Graphics_Dwm",
     "Win32_UI_Shell",
 ] }
 anyhow = { version = "1.0", default-features = false }

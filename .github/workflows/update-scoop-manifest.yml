@@ -27,15 +27,15 @@ jobs:
           set -euo pipefail
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
           echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
-          echo "url=https://github.com/${REPOSITORY}/releases/download/${TAG}/ihateborders.exe" >> "$GITHUB_OUTPUT"
+          echo "url=https://github.com/${REPOSITORY}/releases/download/${TAG}/ultraborderless.exe" >> "$GITHUB_OUTPUT"
 
       - name: Determine SHA256
         id: checksum
         shell: bash
         run: |
           set -euo pipefail
-          curl -fsSL "${{ steps.meta.outputs.url }}" -o ihateborders.exe
-          hash="$(sha256sum ihateborders.exe | awk '{ print tolower($1) }')"
+          curl -fsSL "${{ steps.meta.outputs.url }}" -o ultraborderless.exe
+          hash="$(sha256sum ultraborderless.exe | awk '{ print tolower($1) }')"
           echo "hash=$hash" >> "$GITHUB_OUTPUT"
 
       - name: Update Scoop manifest
@@ -48,8 +48,8 @@ jobs:
           tmp_file="$(mktemp)"
           jq --arg v "$VERSION" --arg u "$URL" --arg h "$HASH" \
              '.version = $v | .architecture."64bit".url = $u | .architecture."64bit".hash = $h' \
-             scoop/ihateborders.json > "$tmp_file"
-          mv "$tmp_file" scoop/ihateborders.json
+             scoop/ultraborderless.json > "$tmp_file"
+          mv "$tmp_file" scoop/ultraborderless.json
 
       - name: Commit and push changes
         env:
@@ -58,7 +58,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add scoop/ihateborders.json
+          git add scoop/ultraborderless.json
 
           if git diff --cached --quiet; then
             echo "No manifest changes to commit."

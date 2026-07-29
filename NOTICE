@@ -1,0 +1,74 @@
+ultraborderless
+Copyright (C) 2026 Alpha-Leader
+
+This program is a modified version of "ihateborders":
+
+    ihateborders
+    Copyright (C) 2025-2026 Z1xus
+    https://github.com/Z1xus/ihateborders
+
+Forked from ihateborders at commit b5bb27e (2026-02-16), which was version
+1.1.1 of that project. Original copyright is retained; the notices below record
+only what was changed, as required by section 5(a) of the GNU General Public
+License version 3.
+
+------------------------------------------------------------------------------
+Modifications by Alpha-Leader, 2026-07-28
+------------------------------------------------------------------------------
+
+Correctness fixes:
+
+  * Icon retrieval used a blocking SendMessageW(WM_GETICON), which never
+    returned if the target application was not pumping its message queue. A
+    single hung window permanently froze the window list with no recovery,
+    including via the F5 refresh. Replaced with a time-bounded
+    SendMessageTimeoutW, and the refresh flag is now released by an RAII guard
+    so no exit path can strand it.
+
+  * The selected window was tracked by its index into a list that is rebuilt
+    and re-sorted every five seconds, so a reordering between selection and
+    action could apply changes to a different application. Selection is now
+    tracked by window handle.
+
+  * Window handles were used without validation. Because Windows recycles
+    handles, a stale entry could target an unrelated window. Handles are now
+    checked with IsWindow before any modification.
+
+  * Restoring borders OR-ed in WS_CAPTION | WS_THICKFRAME rather than replaying
+    the window's actual previous style, which gave dialogs and natively
+    borderless windows frames they never had. The original style, rectangle,
+    and topmost state are now recorded and restored exactly.
+
+  * Process names were resolved with a full CreateToolhelp32Snapshot per window
+    per refresh, and the snapshot handle was never closed. Replaced with a
+    single snapshot per refresh that is properly closed.
+
+New features:
+
+  * Region placement: a stripped window can be sized and anchored into a
+    sub-rectangle of a monitor (centered, left, right, or a custom offset)
+    rather than only filling the entire display. Intended for fitting a game
+    into part of an ultrawide monitor.
+
+  * Optional always-on-top, which is what allows a window narrower than the
+    monitor to cover the taskbar.
+
+  * Settings persist to %APPDATA%\ultraborderless\config.txt.
+
+  * Action results and failures are surfaced in the UI; previously they were
+    written to a console that does not exist in a windowed subsystem build.
+
+  * Unit tests covering placement geometry and style round-tripping.
+
+------------------------------------------------------------------------------
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License version 3, as published by the Free
+Software Foundation.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+The full license text is in the LICENSE file, and at
+<https://www.gnu.org/licenses/gpl-3.0.html>.
