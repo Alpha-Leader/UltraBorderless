@@ -5,7 +5,7 @@ edition = "2024"
 description = "Windows utility for making any window borderless and placing it into a region of a monitor, sized and anchored how you want."
 authors = ["Alpha-Leader"]
 license = "GPL-3.0-only"
-repository = "https://github.com/Alpha-Leader/ultraborderless"
+repository = "https://github.com/Alpha-Leader/UltraBorderless"
 readme = "README.md"
 
 [dependencies]

@@ -1,8 +1,8 @@
 ## ultraborderless <img src="assets/icon.ico" alt="ultraborderless icon" width="48" height="48" align="left">
 ![Windows Only](https://img.shields.io/badge/platform-Windows-blue?logo=windows)
 [![License](https://img.shields.io/badge/license-GPL--3.0-green)](LICENSE)
-[![Downloads](https://img.shields.io/github/downloads/Alpha-Leader/ultraborderless/total)](https://github.com/Alpha-Leader/ultraborderless/releases)
-[![Issues](https://img.shields.io/github/issues/Alpha-Leader/ultraborderless)](https://github.com/Alpha-Leader/ultraborderless/issues)
+[![Downloads](https://img.shields.io/github/downloads/Alpha-Leader/UltraBorderless/total)](https://github.com/Alpha-Leader/UltraBorderless/releases)
+[![Issues](https://img.shields.io/github/issues/Alpha-Leader/UltraBorderless)](https://github.com/Alpha-Leader/UltraBorderless/issues)
 
 A lightweight Windows utility that strips the borders from any window and places it into a
 **region** of your monitor — sized and anchored how you want, rather than only stretching it across
@@ -23,7 +23,7 @@ See [NOTICE](NOTICE) for the full list of modifications, and go star
 
 ### Installation
 
-Download the latest release from the [Releases](https://github.com/Alpha-Leader/ultraborderless/releases)
+Download the latest release from the [Releases](https://github.com/Alpha-Leader/UltraBorderless/releases)
 page. It's a single self-contained `.exe` — no installer, no dependencies.
 
 ### Usage
@@ -89,15 +89,13 @@ after each action; delete the file to reset to defaults.
 ### Building
 
 ```bash
-git clone https://github.com/Alpha-Leader/ultraborderless
-cd ultraborderless
+git clone https://github.com/Alpha-Leader/UltraBorderless
+cd UltraBorderless
 cargo build --release
 ```
 
-The binary lands in `target/release/ultraborderless.exe`.
-
-Note that `.cargo/config.toml` sets `target-cpu=native`, so a locally built binary is tuned to the
-machine that built it and is not portable to older CPUs.
+The binary lands in `target/release/ultraborderless.exe`, and is portable — no `target-cpu=native`,
+so a build from one machine runs on any x86-64 CPU.
 
 Run the tests with `cargo test`.
 
