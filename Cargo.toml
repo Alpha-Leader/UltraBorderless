@@ -1,6 +1,6 @@
 [package]
 name = "ultraborderless"
-version = "1.2.0"
+version = "1.2.1"
 edition = "2024"
 description = "Windows utility for making any window borderless and placing it into a region of a monitor, sized and anchored how you want."
 authors = ["Alpha-Leader"]
