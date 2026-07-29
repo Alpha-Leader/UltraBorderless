@@ -27,8 +27,20 @@ See [NOTICE](NOTICE) for the full list of modifications, and go star
 
 ### Installation
 
+#### Portable
+
 Download the latest release from the [Releases](https://github.com/Alpha-Leader/UltraBorderless/releases)
-page. It's a single self-contained `.exe` — no installer, no dependencies.
+page. It's a single self-contained `.exe` — no installer, no dependencies. Verify it against the
+`SHA256SUMS.txt` published alongside it if you like.
+
+The binary is unsigned, so Windows SmartScreen will likely warn on first run — choose
+**More info → Run anyway**, or build it yourself from source (see below).
+
+#### Scoop
+
+```bash
+scoop install https://raw.githubusercontent.com/Alpha-Leader/UltraBorderless/main/scoop/ultraborderless.json
+```
 
 ### Usage
 
